@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+	<Properties>
+		<Property name="LOG_PATTERN">%d{YYYY-MM-dd'T'HH:mm:ss.SSSZ}::%p::%m%n</Property>
+		<Property name="LOG_DIRECTORY">C:/Temp/logs</Property>
+		<Property name="APP_LOG_FILE_NAME">banking</Property>
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="APP-LOG" fileName="${LOG_DIRECTORY}/${APP_LOG_FILE_NAME}-logs.log" filePattern="${LOG_DIRECTORY}/$${date:dd-MMM-yyyy}/${APP_LOG_FILE_NAME}-logs-%d{dd-MMM-yyyy HH.mm.ss Z}.log">
+			<LevelRangeFilter minLevel="ERROR" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+		</RollingFile>
+
+		<Console name="CONSOLE" target="SYSTEM_OUT" follow="true">
+			<LevelRangeFilter minLevel="ERROR" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+	</Appenders>
+	
+	<Loggers>
+		<Logger name="g" level="debug" additivity="false">
+			<appender-ref ref="APP-LOG" />
+			<appender-ref ref="CONSOLE" />
+		</Logger>
+		
+		<Root level="debug">
+			<appender-ref ref="APP-LOG" />
+			<appender-ref ref="CONSOLE" />
+		</Root>
+	</Loggers>
+</Configuration>
+	
+

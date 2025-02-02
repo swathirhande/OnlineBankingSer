@@ -1,0 +1,42 @@
+# Java related
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.log
+*.swp
+*.swo
+*.DS_Store
+/.idea/
+/target/
+/bin/
+/out/
+/build/
+/.gradle/
+/.mvn/
+
+# Node.js (if applicable)
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Maven specific
+mvnw*
+.settings/
+*.project
+*.classpath
+
+# VS Code and JetBrains IDEs
+.vscode/
+*.log
+.idea/
+
+# Web development
+*.min.js
+*.map
+*.env
+.env.local
+dist/
+coverage/
+
